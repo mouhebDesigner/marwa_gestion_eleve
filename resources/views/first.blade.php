@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>New file blade in this project</h2>
+    <h2>New file </h2>
+    <p>new tag in first blade</p>
 </body>
 </html>
