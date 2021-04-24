@@ -1,0 +1,27 @@
+.login-box{
+    margin-top: 200px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn-delete{
+    border: none;
+    background: transparent;
+
+}
+.fa-edit{
+    transform: scale(1.5);
+}
+.fa-trash{
+    transform: scale(1.5);
+    color: rgb(165, 55, 55)
+}
+
+.fa-plus{
+    color: #f8f9fa;
+    transform: scale(1.5);
+    background: #096e95;
+    padding: 6px;
+    border-radius: 50%;
+}

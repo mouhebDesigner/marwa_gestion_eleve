@@ -17,6 +17,7 @@ class CreateElevesTable extends Migration
             $table->id();
             $table->string('niveau');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('relative_id')->constrained('relatives')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

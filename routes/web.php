@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\EleveController;
+use App\Http\Controllers\Admin\ParentController;
+use App\Http\Controllers\Admin\EnseignantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->group(function () {
+    Route::resource('enseignants', EnseignantController::class);
+    Route::resource('eleves', EleveController::class);
+    Route::resource('parents', ParentController::class);
 });

@@ -16,7 +16,7 @@ class CreateEnseignantsTable extends Migration
         Schema::create('enseignants', function (Blueprint $table) {
             $table->id();
             $table->string('specialite');
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
