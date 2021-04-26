@@ -43,7 +43,7 @@
                with font-awesome or any other icon font library -->
             <li class="nav-item">
               <a href="{{ url('home') }}" class="nav-link @if(Request::is('home')) active @endif">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="fas fa-home"></i>
                 <p>
                   Acceuil
                   <i class="right fas fa-angle-left"></i>
@@ -52,7 +52,7 @@
             </li>
           <li class="nav-item">
             <a href="{{ url('admin/enseignants') }}" class="nav-link @if(Request::is('admin/enseignants*')) active @endif">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="fas fa-chalkboard-teacher"></i>
               <p>
                 Gérer les enseignants
                 <i class="right fas fa-angle-left"></i>
@@ -61,7 +61,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('admin/parents') }}" class="nav-link @if(Request::is('admin/parents*')) active @endif">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fas fa-user-secret"></i>
               <p>
                 Gérer les parents
                 <i class="right fas fa-angle-left"></i>
@@ -69,8 +69,17 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ url('admin/classes') }}" class="nav-link @if(Request::is('classes*')) active @endif">
+              <i class="fas fa-school"></i>
+              <p>
+                Gérer les classes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ url('admin/eleves') }}" class="nav-link @if(Request::is('admin/eleves*')) active @endif">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="fas fa-user-graduate"></i>
               <p>
                 Gérer les élèves
                 <i class="right fas fa-angle-left"></i>
@@ -80,13 +89,14 @@
           
           <li class="nav-item">
             <a href="{{ url('admin/matieres') }}" class="nav-link @if(Request::is('matieres*')) active @endif">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="fas fa-book"></i>
               <p>
                 Gérer les matiéres
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
+         
           <li class="nav-item">
             <a href="{{ url('admin/abscence') }}" class="nav-link @if(Request::is('abscence*')) active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -97,19 +107,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('admin/seances') }}" class="nav-link @if(Request::is('seances*')) active @endif">
+            <a href="{{ url('admin/cantines') }}" class="nav-link @if(Request::is('cantines*')) active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Gérer les séances
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('admin/parents') }}" class="nav-link @if(Request::is('parents*')) active @endif">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Gérer les parents
+                Gérer les cantines
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

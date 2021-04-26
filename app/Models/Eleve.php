@@ -15,6 +15,10 @@ class Eleve extends Model
     public function relative(){
         return $this->belongsTo(Relative::class);
     }
+    
+    public function niveau(){
+        return $this->belongsTo(Niveau::class);
+    }
 
     
 }

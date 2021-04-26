@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateElevesTable extends Migration
+class CreateNiveauxTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateElevesTable extends Migration
      */
     public function up()
     {
-        Schema::create('eleves', function (Blueprint $table) {
+        Schema::create('niveaux', function (Blueprint $table) {
             $table->id();
-            $table->string('niveau');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('relative_id')->constrained('relatives')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('titre');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateElevesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eleves');
+        Schema::dropIfExists('niveaux');
     }
 }

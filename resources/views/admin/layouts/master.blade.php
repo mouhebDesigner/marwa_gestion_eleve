@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="UTF-8">
-    <title>Cours en ligne</title>
+    <title>Gestion d'élève</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">

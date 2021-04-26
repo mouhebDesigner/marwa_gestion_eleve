@@ -16,7 +16,6 @@
                         <div class="col-sm-6">
                             <h1 class="m-0">Liste des enseignants</h1>
                         </div><!-- /.col -->
-                       
                     </div>
                 </div>
             </div>

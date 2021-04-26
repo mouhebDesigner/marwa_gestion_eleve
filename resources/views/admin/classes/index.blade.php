@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Liste des élèves</h1>
+                            <h1 class="m-0">Liste des classes</h1>
                         </div><!-- /.col -->
                        
                     </div>
@@ -48,7 +48,7 @@
                                                         aria-controls="example1">
                                                     </label>
                                                 </div>
-                                                <a href="{{ url('admin/eleves/create') }}">
+                                                <a href="{{ url('admin/classes/create') }}">
                                                     <i class="fa fa-plus"></i>
                                                 </a>
                                             </div>
@@ -60,16 +60,10 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Nom d'élève
+                                                            Nom de classe
                                                         </th>
                                                         <th>
-                                                            Nom de parent
-                                                        </th>
-                                                        <th>
-                                                            Email
-                                                        </th>
-                                                        <th>
-                                                            Classe
+                                                            Nombre des élèves
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -81,29 +75,26 @@
                                                         <th>
                                                             Actions
                                                         </th>
-
                                                     </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($eleves as $eleve)
+                                                    @foreach($niveaux as $niveau)
                                                         <tr>
-                                                            <td>{{ $eleve->user->nom }}</td>
-                                                            <td>{{ $eleve->relative->user->nom }}</td>
-                                                            <td>{{ $eleve->user->email }}</td>
-                                                            <td>{{ $eleve->niveau->titre }}</td>
-                                                            <td>{{ $eleve->created_at }}</td>
-                                                            <td>{{ $eleve->updated_at }}</td>
+                                                            <td>{{ $niveau->titre }}</td>
+                                                            <td>{{ $niveau->eleves()->count() }}</td>
+                                                            <td>{{ $niveau->created_at }}</td>
+                                                            <td>{{ $niveau->updated_at }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
-                                                                    <form action="{{ url('admin/eleves/'.$eleve->user->id) }}" method="post">
+                                                                    <form action="{{ url('admin/classes/'.$niveau->id) }}" method="post">
                                                                         @csrf
                                                                         @method('delete')
-                                                                        <button type="submit" class="btn-delete" onclick="return confirm('Voules-vous supprimer cet élèves')">
+                                                                        <button type="submit" class="btn-delete" onclick="return confirm('Voules-vous supprimer ce matière')">
                                                                             <i class="fa fa-trash"></i>
                                                                         </button>
                                                                     </form>
-                                                                    <a href="{{ url('admin/eleves/'.$eleve->user->id.'/edit') }}" onclick="return confirm('Voules-vous modifier cet élèves')">
+                                                                    <a href="{{ url('admin/classes/'.$niveau->id.'/edit') }}" onclick="return confirm('Voules-vous modifier ce matière')">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
                                                                 </div>
@@ -112,18 +103,12 @@
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr>
+                                                     <tr>
                                                         <th>
-                                                            Nom d'élève
+                                                            Titre de matiére
                                                         </th>
                                                         <th>
-                                                            Nom de parent
-                                                        </th>
-                                                        <th>
-                                                            Email
-                                                        </th>
-                                                        <th>
-                                                            Classe
+                                                            Nom d'enseignant
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -135,7 +120,6 @@
                                                         <th>
                                                             Actions
                                                         </th>
-
                                                     </tr>
                                                 </tfoot>
                                             </table>

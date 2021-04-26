@@ -58,7 +58,7 @@ class EleveController extends Controller
         $user->save();
         $eleve = new Eleve();
 
-        $eleve->niveau = $request->niveau;
+        $eleve->niveau_id = $request->niveau_id;
         $eleve->user_id = $user->id;
         $eleve->relative_id = $request->relative_id;    
         $eleve->save();
@@ -137,7 +137,7 @@ class EleveController extends Controller
         $eleve_id = Eleve::where('user_id', $id)->first()->id;
         $eleve =  Eleve::find($eleve_id);
 
-        $eleve->niveau = $request->niveau;
+        $eleve->niveau_id = $request->niveau_id;
         $eleve->relative_id = $request->relative_id;    
 
 

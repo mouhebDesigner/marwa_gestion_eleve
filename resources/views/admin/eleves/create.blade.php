@@ -27,14 +27,26 @@
                                 <div class="row">
                                     <div class="col-md-8 offset-md-2">
                                             <div class="form-group">
-                                                <label for="nom">Parent d'élève</label>
-                                                <select name="relative_id" id="" class="form-control">
+                                                <label for="relative_id">Parent d'élève</label>
+                                                <select name="relative_id" id="relative_id" class="form-control">
                                                     <option value="" selected disbaled>Choisir le parent d'élève</option>
                                                     @foreach(App\Models\Relative::all() as $relative)
                                                         <option value="{{ $relative->id }}" @if(old('relative_id') == $relative->id) selected @endif>{{ $relative->user->nom }} {{ $relative->user->prenom }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('relative_id')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="niveau_id">Niveau d'élève</label>
+                                                <select name="niveau_id" id="niveau_id" class="form-control">
+                                                    <option value="" selected disbaled>Choisir la classe</option>
+                                                    @foreach(App\Models\Niveau::all() as $niveau)
+                                                        <option value="{{ $niveau->id }}" @if(old('niveau_id') == $niveau->id) selected @endif>{{ $niveau->titre }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('niveau_id')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
@@ -66,13 +78,7 @@
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
-                                            <div class="form-group">
-                                                <label for="email">Niveau d'élève</label>
-                                                <input type="text" class="form-control" name="niveau" value="{{ old('niveau') }}" id="niveau" placeholder="Saisir niveau d'élève">
-                                                @error('niveau')
-                                                    <p class="text-danger">{{ $message }}</p>
-                                                @enderror
-                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label for="password">Mot de passe d'élève</label>
                                                 <input type="password" class="form-control" name="password" value="{{ old('password') }}" id="password" placeholder="Saisir mot de passe d'élève">

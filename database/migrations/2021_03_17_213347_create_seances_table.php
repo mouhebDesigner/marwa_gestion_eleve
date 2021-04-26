@@ -21,7 +21,6 @@ class CreateSeancesTable extends Migration
             $table->boolean('presence')->default(NULL);
             $table->foreignId('enseignant_id')->constrained('enseignants')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('matiere_id')->constrained('matieres')->onDelete('cascade')->onUpdate('cascade');
-            
             $table->timestamps();
         });
     }

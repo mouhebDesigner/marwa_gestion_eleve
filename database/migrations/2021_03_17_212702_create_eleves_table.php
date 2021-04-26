@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMatieresTable extends Migration
+class CreateElevesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateMatieresTable extends Migration
      */
     public function up()
     {
-        Schema::create('matieres', function (Blueprint $table) {
+        Schema::create('eleves', function (Blueprint $table) {
             $table->id();
-            $table->string('titre');
-            $table->foreignId('enseignant_id')->constrained('enseignants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('relative_id')->constrained('relatives')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('niveau_id')->constrained('niveaux')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateMatieresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matieres');
+        Schema::dropIfExists('eleves');
     }
 }

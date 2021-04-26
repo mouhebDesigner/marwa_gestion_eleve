@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EleveController;
+use App\Http\Controllers\Admin\NiveauController;
 use App\Http\Controllers\Admin\ParentController;
+use App\Http\Controllers\Admin\MatiereController;
 use App\Http\Controllers\Admin\EnseignantController;
 
 /*
@@ -28,4 +30,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('enseignants', EnseignantController::class);
     Route::resource('eleves', EleveController::class);
     Route::resource('parents', ParentController::class);
+    Route::resource('matieres', MatiereController::class);
+    Route::resource('classes', NiveauController::class);
 });
