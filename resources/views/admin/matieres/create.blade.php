@@ -38,7 +38,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="niveau_id">Niveau d'élève</label>
+                                                <label for="niveau_id">La classe</label>
                                                 <select name="niveau_id" id="niveau_id" class="form-control">
                                                     <option value="" selected disbaled>Choisir le classe</option>
                                                     @foreach(App\Models\Niveau::all() as $niveau)
