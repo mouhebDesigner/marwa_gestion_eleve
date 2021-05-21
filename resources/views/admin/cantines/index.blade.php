@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Liste des classes</h1>
+                            <h1 class="m-0">Les cantines</h1>
                         </div><!-- /.col -->
                        
                     </div>
@@ -48,7 +48,7 @@
                                                         aria-controls="example1">
                                                     </label>
                                                 </div>
-                                                <a href="{{ url('admin/classes/create') }}">
+                                                <a href="{{ url('admin/cantines/create') }}">
                                                     <i class="fa fa-plus"></i>
                                                 </a>
                                             </div>
@@ -60,10 +60,16 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Nom de classe
+                                                            Type 
                                                         </th>
                                                         <th>
-                                                            Nombre des élèves
+                                                            Jours 
+                                                        </th>
+                                                        <th>
+                                                            Temps 
+                                                        </th>
+                                                        <th>
+                                                            Nombre de repas
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -79,27 +85,29 @@
 
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($classes as $classe)
+                                                    @foreach($cantines as $cantine)
                                                         <tr>
-                                                            <td>{{ $classe->titre }}</td>
-                                                            <td>{{ $classe->eleves()->count() }}</td>
-                                                            <td>{{ $classe->created_at }}</td>
-                                                            <td>{{ $classe->updated_at }}</td>
+                                                            <td>{{ $cantine->type }}</td>
+                                                            <td>{{ $cantine->jours }}</td>
+                                                            <td>{{ $cantine->temps }}</td>
+                                                            <td>{{ $cantine->repas()->count() }}</td>
+                                                            <td>{{ $cantine->created_at }}</td>
+                                                            <td>{{ $cantine->updated_at }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
-                                                                    <form action="{{ url('admin/classes/'.$classe->id) }}" method="post">
+                                                                    <form action="{{ url('admin/cantines/'.$cantine->id) }}" method="post">
                                                                         @csrf
                                                                         @method('delete')
                                                                         <button type="submit" class="btn-delete" onclick="return confirm('Voules-vous supprimer ce classe')">
                                                                             <i class="fa fa-trash"></i>
                                                                         </button>
                                                                     </form>
-                                                                    <a href="{{ url('admin/classes/'.$classe->id.'/edit') }}" onclick="return confirm('Voules-vous modifier ce classe')">
+                                                                    <a href="{{ url('admin/cantines/'.$cantine->id.'/edit') }}" onclick="return confirm('Voules-vous modifier ce classe')">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
                                                                     
-                                                                    <a href="{{ url('admin/classe/'.$classe->id.'/seance') }}" class="btn btn-primary">
-                                                                        Registre d'appel
+                                                                    <a href="{{ url('admin/cantine/'.$cantine->id.'/repas') }}" class="btn btn-primary">
+                                                                        Voir repas
                                                                     </a>
 
                                                                 </div>
@@ -110,10 +118,16 @@
                                                 <tfoot>
                                                      <tr>
                                                         <th>
-                                                            Titre de matiére
+                                                            Type 
                                                         </th>
                                                         <th>
-                                                            Nom d'enseignant
+                                                            Jours 
+                                                        </th>
+                                                        <th>
+                                                            Temps 
+                                                        </th>
+                                                        <th>
+                                                            Nombre de repas
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -129,7 +143,7 @@
                                                 </tfoot>
                                             </table>
                                         </div>
-                                        {{ $classes->links() }}
+                                        {{ $cantines->links() }}
                                     </div>
                                 </div>
                             <!-- /.card-body -->

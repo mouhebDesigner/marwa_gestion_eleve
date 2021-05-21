@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Niveau;
+use App\Models\Classe;
+use App\Models\Seance;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClasseRequest;
 use App\Http\Requests\NiveauRequest;
 
-class NiveauController extends Controller
+class ClasseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,16 @@ class NiveauController extends Controller
      */
     public function index()
     {
-        $niveaux = Niveau::paginate(10);
+        $classes = Classe::paginate(10);
 
-        return view('admin.niveaux.index', compact('niveaux'));
+        return view('admin.classes.index', compact('classes'));
+    }
+
+    public function registre_appel($classe_id){
+        
+        $seances = Seance::where('classe_id', $classe_id)->paginate(10);
+
+        return view('admin.seances.index', compact('seances'));
     }
 
     /**
@@ -28,7 +37,7 @@ class NiveauController extends Controller
      */
     public function create()
     {
-        return view('admin.niveaux.create');
+        return view('admin.classes.create');
     }
 
     /**
@@ -37,15 +46,15 @@ class NiveauController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NiveauRequest $request)
+    public function store(ClasseRequest $request)
     {
-        $niveau = new Niveau();
+        $niveau = new Classe();
         $niveau->titre = $request->titre;   
     
         $niveau->save();
     
         
-        return redirect('admin/niveaux')->with('added', 'Le niveau a été ajouté avec succés');
+        return redirect('admin/classes')->with('added', 'La classe a été ajouté avec succés');
     }
 
     /**
@@ -67,9 +76,9 @@ class NiveauController extends Controller
      */
     public function edit($id)
     {
-        $niveau = Niveau::find($id);
+        $niveau = Classe::find($id);
 
-        return view('admin.niveaux.edit', compact('niveau'));
+        return view('admin.classes.edit', compact('niveau'));
     }
 
     /**
@@ -79,14 +88,14 @@ class NiveauController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(NiveauRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $niveau = Niveau::find($id);
+        $niveau = Classe::find($id);
         $niveau->titre = $request->titre;
     
         $niveau->save();
 
-        return redirect('admin/niveaux')->with('updated', 'Le niveau a été modifié avec succés');
+        return redirect('admin/classes')->with('updated', 'La classe a été modifié avec succés');
     }
 
     /**
@@ -97,8 +106,8 @@ class NiveauController extends Controller
      */
     public function destroy($id)
     {
-        Niveau::find($id)->delete();
+        Classe::find($id)->delete();
 
-        return redirect('admin/niveaux')->with('deleted', 'Le niveau a été supprimer avec succés');
+        return redirect('admin/classes')->with('deleted', 'La classe a été supprimer avec succés');
     }
 }

@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Liste des classes</h1>
+                            <h1 class="m-0">Liste de séances</h1>
                         </div><!-- /.col -->
                        
                     </div>
@@ -23,8 +23,6 @@
             <div class="content">
                 <div class="container-fluid">
                     @include('admin.includes.error-message')
-                    @include('admin.includes.statistique')
-
                     <div class="row">
                         <div class="col-12">
                             
@@ -41,15 +39,17 @@
                                             <div class="d-flex justify-content-between">
                                                 <div id="example1_filter" class="dataTables_filter">
                                                     <label>
-                                                        Chercher:
+                                                        Search:
                                                         <input 
                                                         type="search" class="form-control form-control-sm" 
                                                         placeholder="" 
                                                         aria-controls="example1">
                                                     </label>
                                                 </div>
-                                                <a href="{{ url('admin/classes/create') }}">
-                                                    <i class="fa fa-plus"></i>
+                                                <a href="{{ url('admin/seances/create') }}">
+                                                    <button class="btn-icon">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
                                                 </a>
                                             </div>
                                         </div>
@@ -60,11 +60,24 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Nom de classe
+                                                            classe
                                                         </th>
                                                         <th>
-                                                            Nombre des élèves
+                                                            jours
                                                         </th>
+                                                        <th>
+                                                            temps début
+                                                        </th>
+                                                        <th>
+                                                            temps fin
+                                                        </th>
+                                                        <th>
+                                                            formateur
+                                                        </th>
+                                                        <th>
+                                                            matiere
+                                                        </th>
+                                                        
                                                         <th>
                                                             date de creation
                                                         </th>
@@ -79,42 +92,55 @@
 
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($classes as $classe)
+                                                    @foreach($seances as $seance)
                                                         <tr>
-                                                            <td>{{ $classe->titre }}</td>
-                                                            <td>{{ $classe->eleves()->count() }}</td>
-                                                            <td>{{ $classe->created_at }}</td>
-                                                            <td>{{ $classe->updated_at }}</td>
+                                                        
+                                                            <td>{{ $seance->classe->titre }}</td>
+                                                            <td>{{ $seance->jours }}</td>
+                                                            <td>{{ $seance->temps_debut }}</td>
+                                                            <td>{{ $seance->temps_fin }}</td>
+                                                            <td>{{ $seance->enseignant->user->prenom }} {{ $seance->enseignant->user->nom }}</td>
+                                                            <td>{{ $seance->matiere->titre }}</td>
+                                                            <td>{{ $seance->created_at }}</td>
+                                                            <td>{{ $seance->updated_at }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
-                                                                    <form action="{{ url('admin/classes/'.$classe->id) }}" method="post">
+                                                                    <form action="{{ url('admin/seances/'.$seance->id) }}" method="post">
                                                                         @csrf
                                                                         @method('delete')
-                                                                        <button type="submit" class="btn-delete" onclick="return confirm('Voules-vous supprimer ce classe')">
+                                                                        <button type="submit" class="btn-delete" onclick="return confirm('Voules-vous supprimer cette séance')">
                                                                             <i class="fa fa-trash"></i>
                                                                         </button>
                                                                     </form>
-                                                                    <a href="{{ url('admin/classes/'.$classe->id.'/edit') }}" onclick="return confirm('Voules-vous modifier ce classe')">
+                                                                    <a href="{{ url('admin/seances/'.$seance->id.'/edit') }}" onclick="return confirm('Voules-vous modifier cette séance')">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
-                                                                    
-                                                                    <a href="{{ url('admin/classe/'.$classe->id.'/seance') }}" class="btn btn-primary">
-                                                                        Registre d'appel
-                                                                    </a>
-
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
-                                                     <tr>
+                                                    <tr>
                                                         <th>
-                                                            Titre de matiére
+                                                            classe
                                                         </th>
                                                         <th>
-                                                            Nom d'enseignant
+                                                            jours
                                                         </th>
+                                                        <th>
+                                                            temps début
+                                                        </th>
+                                                        <th>
+                                                            temps fin
+                                                        </th>
+                                                        <th>
+                                                            formateur
+                                                        </th>
+                                                        <th>
+                                                            matiere
+                                                        </th>
+                                                        
                                                         <th>
                                                             date de creation
                                                         </th>
@@ -125,11 +151,11 @@
                                                         <th>
                                                             Actions
                                                         </th>
+
                                                     </tr>
                                                 </tfoot>
                                             </table>
                                         </div>
-                                        {{ $classes->links() }}
                                     </div>
                                 </div>
                             <!-- /.card-body -->

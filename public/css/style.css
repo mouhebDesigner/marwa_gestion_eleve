@@ -25,3 +25,7 @@
     padding: 6px;
     border-radius: 50%;
 }
+.btn-icon{
+    border: none;
+    background: transparent;
+}

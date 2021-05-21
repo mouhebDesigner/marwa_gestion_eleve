@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Liste des classes</h1>
+                            <h1 class="m-0">Liste des repas</h1>
                         </div><!-- /.col -->
                        
                     </div>
@@ -48,9 +48,7 @@
                                                         aria-controls="example1">
                                                     </label>
                                                 </div>
-                                                <a href="{{ url('admin/classes/create') }}">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -60,10 +58,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Nom de classe
-                                                        </th>
-                                                        <th>
-                                                            Nombre des élèves
+                                                            Repa
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -79,28 +74,24 @@
 
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($classes as $classe)
+                                                    @foreach($repas as $repa)
                                                         <tr>
-                                                            <td>{{ $classe->titre }}</td>
-                                                            <td>{{ $classe->eleves()->count() }}</td>
-                                                            <td>{{ $classe->created_at }}</td>
-                                                            <td>{{ $classe->updated_at }}</td>
+                                                            <td>{{ $repa->contenue }}</td>
+                                                            <td>{{ $repa->created_at }}</td>
+                                                            <td>{{ $repa->updated_at }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
-                                                                    <form action="{{ url('admin/classes/'.$classe->id) }}" method="post">
+                                                                    <form action="{{ url('admin/repas/'.$repa->id) }}" method="post">
                                                                         @csrf
                                                                         @method('delete')
                                                                         <button type="submit" class="btn-delete" onclick="return confirm('Voules-vous supprimer ce classe')">
                                                                             <i class="fa fa-trash"></i>
                                                                         </button>
                                                                     </form>
-                                                                    <a href="{{ url('admin/classes/'.$classe->id.'/edit') }}" onclick="return confirm('Voules-vous modifier ce classe')">
+                                                                    <a href="{{ url('admin/repas/'.$repa->id.'/edit') }}" onclick="return confirm('Voules-vous modifier ce classe')">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
                                                                     
-                                                                    <a href="{{ url('admin/classe/'.$classe->id.'/seance') }}" class="btn btn-primary">
-                                                                        Registre d'appel
-                                                                    </a>
 
                                                                 </div>
                                                             </td>
@@ -110,10 +101,7 @@
                                                 <tfoot>
                                                      <tr>
                                                         <th>
-                                                            Titre de matiére
-                                                        </th>
-                                                        <th>
-                                                            Nom d'enseignant
+                                                            Repa
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -129,7 +117,7 @@
                                                 </tfoot>
                                             </table>
                                         </div>
-                                        {{ $classes->links() }}
+                                        {{ $repas->links() }}
                                     </div>
                                 </div>
                             <!-- /.card-body -->

@@ -18,9 +18,11 @@ class CreateSeancesTable extends Migration
             $table->enum('jours', ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']);
             $table->time('temps_debut');
             $table->time('temps_fin');
-            $table->boolean('presence')->default(NULL);
+            $table->boolean('presence')->nullable();
             $table->foreignId('enseignant_id')->constrained('enseignants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('classe_id')->constrained('classes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('matiere_id')->constrained('matieres')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('niveau_id')->constrained('niveaux')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

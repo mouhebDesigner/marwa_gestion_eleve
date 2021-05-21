@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Liste des classes</h1>
+                            <h1 class="m-0">Liste des niveaux</h1>
                         </div><!-- /.col -->
                        
                     </div>
@@ -48,7 +48,7 @@
                                                         aria-controls="example1">
                                                     </label>
                                                 </div>
-                                                <a href="{{ url('admin/classes/create') }}">
+                                                <a href="{{ url('admin/niveaux/create') }}">
                                                     <i class="fa fa-plus"></i>
                                                 </a>
                                             </div>
@@ -60,7 +60,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Nom de classe
+                                                            Nom de niveau
                                                         </th>
                                                         <th>
                                                             Nombre des élèves
@@ -79,29 +79,24 @@
 
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($classes as $classe)
+                                                    @foreach($niveaux as $niveau)
                                                         <tr>
-                                                            <td>{{ $classe->titre }}</td>
-                                                            <td>{{ $classe->eleves()->count() }}</td>
-                                                            <td>{{ $classe->created_at }}</td>
-                                                            <td>{{ $classe->updated_at }}</td>
+                                                            <td>{{ $niveau->titre }}</td>
+                                                            <td>{{ $niveau->eleves()->count() }}</td>
+                                                            <td>{{ $niveau->created_at }}</td>
+                                                            <td>{{ $niveau->updated_at }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
-                                                                    <form action="{{ url('admin/classes/'.$classe->id) }}" method="post">
+                                                                    <form action="{{ url('admin/niveaux/'.$niveau->id) }}" method="post">
                                                                         @csrf
                                                                         @method('delete')
-                                                                        <button type="submit" class="btn-delete" onclick="return confirm('Voules-vous supprimer ce classe')">
+                                                                        <button type="submit" class="btn-delete" onclick="return confirm('Voules-vous supprimer ce matière')">
                                                                             <i class="fa fa-trash"></i>
                                                                         </button>
                                                                     </form>
-                                                                    <a href="{{ url('admin/classes/'.$classe->id.'/edit') }}" onclick="return confirm('Voules-vous modifier ce classe')">
+                                                                    <a href="{{ url('admin/niveaux/'.$niveau->id.'/edit') }}" onclick="return confirm('Voules-vous modifier ce matière')">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
-                                                                    
-                                                                    <a href="{{ url('admin/classe/'.$classe->id.'/seance') }}" class="btn btn-primary">
-                                                                        Registre d'appel
-                                                                    </a>
-
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -129,7 +124,6 @@
                                                 </tfoot>
                                             </table>
                                         </div>
-                                        {{ $classes->links() }}
                                     </div>
                                 </div>
                             <!-- /.card-body -->

@@ -38,7 +38,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="niveau_id">La classe</label>
+                                                <label for="niveau_id">Le niveau</label>
                                                 <select name="niveau_id" id="niveau_id" class="form-control">
                                                     <option value="" selected disbaled>Choisir le classe</option>
                                                     @foreach(App\Models\Niveau::all() as $niveau)
@@ -46,6 +46,18 @@
                                                     @endforeach
                                                 </select>
                                                 @error('niveau_id')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="classe_id">La classe</label>
+                                                <select name="classe_id" id="classe_id" class="form-control">
+                                                    <option value="" selected disbaled>Choisir le classe</option>
+                                                    @foreach(App\Models\Classe::all() as $classe)
+                                                        <option value="{{ $classe->id }}" @if(old('classe_id') == $classe->id) selected @endif>{{ $classe->titre }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('classe_id')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>

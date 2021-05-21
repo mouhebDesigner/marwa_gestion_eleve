@@ -2,7 +2,7 @@
 h2{    
     text-align: center;
     font-size: 3rem;
-    color: #fc7148;
+    color: #1b8def;
     font-weight: bold;
     text-shadow: 0 0 5px black;
     position: relative;
@@ -30,10 +30,11 @@ body {
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  width: 500px;
+  width: 700px;
   border-radius: 3px;
   background-color: #272E38;
   overflow: hidden;
+  padding: 0px 50px;
 }
 .denied .login-form-container {
   -webkit-animation: shake 0.35s normal forwards ease-in-out;
@@ -54,9 +55,9 @@ body {
   position: relative;
   display: block;
   margin: 2em auto;
-  border-bottom: 1px solid #FC7148;
+  border-bottom: 1px solid #1b8def;
   border-radius: 3px;
-  width: 60%;
+  width: 100%;
   padding-left: 20px;
 }
 input{
@@ -71,7 +72,7 @@ input{
   outline: 0;
 }
 .login-form-container .input-wrapper input::-webkit-input-placeholder, .login-form-container .input-wrapper input::-moz-placeholder, .login-form-container .input-wrapper input:-ms-input-placeholder {
-  color: #9EA2AB;
+  color: #1e2f57;
 }
 .login-form-container .input-wrapper:before {
   font-family: FontAwesome;
@@ -80,7 +81,7 @@ input{
   top: 9px;
   left: 8px;
   font-size: 10px;
-  color: #FC7148;
+  color: #1b8def;
 }
 .login-form-container .input-wrapper:nth-child(1):before {
   content: "\f007";
@@ -92,7 +93,7 @@ input{
   outline: 0;
   font-size: 0.8rem;
   letter-spacing: 0.1em;
-  background-color: #FC7148;
+  background-color: #1b8def;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -153,4 +154,29 @@ input{
   100% {
     margin-left: 0;
   }
+}
+.has_account{
+  text-align: center;
+}
+
+.has_account span{
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.has_account a{
+  text-decoration: none;
+  color: #1b8def;
+  font-size: 1.3rem;
+  padding-left: 10px;
+}
+
+.invalid-input strong{
+  display: block;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: #dc3545;
+  color: #df5656;
 }
