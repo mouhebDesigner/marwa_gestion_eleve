@@ -20,5 +20,9 @@ class Eleve extends Model
         return $this->belongsTo(Niveau::class);
     }
 
+    public function notes(){
+        return $this->hasMany(Note::class);
+    }
+
     
 }

@@ -59,6 +59,7 @@ class EleveController extends Controller
         $eleve = new Eleve();
 
         $eleve->niveau_id = $request->niveau_id;
+        $eleve->classe_id = $request->classe_id;
         $eleve->user_id = $user->id;
         $eleve->relative_id = $request->relative_id;    
         $eleve->save();

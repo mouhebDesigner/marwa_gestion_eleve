@@ -51,6 +51,18 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
+                                                <label for="classe_id">Classe d'élève</label>
+                                                <select name="classe_id" id="classe_id" class="form-control">
+                                                    <option value="" selected disbaled>Choisir la classe</option>
+                                                    @foreach(App\Models\Classe::all() as $classe)
+                                                        <option value="{{ $classe->id }}" @if(old('classe_id') == $classe->id) selected @endif>{{ $classe->titre }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('classe_id')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="nom">Nom d'élève</label>
                                                 <input type="text" class="form-control" name="nom" value="{{ old('nom') }}" id="nom" placeholder="Saisir nom d'élève">
                                                 @error('nom')

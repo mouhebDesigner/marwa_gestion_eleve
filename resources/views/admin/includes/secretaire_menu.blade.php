@@ -11,8 +11,8 @@
         </a>
     </li>
   
-    <li class="nav-item @if(Request::is('admin/enseignants*')) active @endif">
-        <a href="{{ url('admin/enseignants') }}" class="nav-link ">
+    <li class="nav-item @if(Request::is('secretaire/enseignants*')) active @endif">
+        <a href="{{ url('secretaire/enseignants') }}" class="nav-link ">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
             Gérer les enseignants
@@ -20,8 +20,8 @@
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('admin/parents*')) active @endif">
-        <a href="{{ url('admin/parents') }}" class="nav-link ">
+    <li class="nav-item @if(Request::is('secretaire/parents*')) active @endif">
+        <a href="{{ url('secretaire/parents') }}" class="nav-link ">
             <i class="nav-icon fas fa-user-secret"></i>
             <p>
             Gérer les parents
@@ -29,8 +29,8 @@
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('admin/eleves*')) active @endif">
-        <a href="{{ url('admin/eleves') }}" class="nav-link ">
+    <li class="nav-item @if(Request::is('secretaire/eleves*')) active @endif">
+        <a href="{{ url('secretaire/eleves') }}" class="nav-link ">
             <i class="nav-icon fas fa-user-graduate"></i>
             <p>
             Gérer les élèves
@@ -38,8 +38,8 @@
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('admin/matieres*')) active @endif">
-        <a href="{{ url('admin/matieres') }}" class="nav-link ">
+    <li class="nav-item @if(Request::is('secretaire/matieres*')) active @endif">
+        <a href="{{ url('secretaire/matieres') }}" class="nav-link ">
             <i class="nav-icon fas fa-book"></i>
             <p>
             Gérer les matiéres
@@ -48,7 +48,7 @@
         </a>
     </li>
     <li class="nav-item @if(Request::is('*seance*')) active @endif">
-        <a href="{{ url('admin/seances') }}" class="nav-link ">
+        <a href="{{ url('secretaire/seances') }}" class="nav-link ">
             <i class="nav-icon fas fa-book"></i>
             <p>
             Gérer les seances
@@ -56,18 +56,8 @@
             </p>
         </a>
     </li>
-    
-    <li class="nav-item @if(Request::is('admin/abscence*')) active @endif">
-        <a href="{{ url('admin/abscence') }}" class="nav-link ">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-            Gérer les absences
-            <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-    </li>
     <li class="nav-item">
-        <a href="{{ url('admin/cantines') }}" class="nav-link @if(Request::is('*cantine*')) active @endif">
+        <a href="{{ url('secretaire/cantines') }}" class="nav-link @if(Request::is('*cantine*')) active @endif">
             <i class="nav-icon fas fa-utensils"></i>
             <p>
             Gérer les cantines
@@ -77,7 +67,7 @@
     </li>
     
     <li class="nav-item">
-        <a href="{{ url('admin/contacts') }}" class="nav-link @if(Request::is('contacts*')) active @endif">
+        <a href="{{ url('secretaire/contacts') }}" class="nav-link @if(Request::is('contacts*')) active @endif">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
             Gérer les contacts

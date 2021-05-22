@@ -39,9 +39,25 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         @if(Auth::user()->grade == "admin")
+
           @include('admin.includes.admin_menu')
+          
         @elseif(Auth::user()->grade == "secretaire")
+
           @include('admin.includes.secretaire_menu')
+          
+        @elseif(Auth::user()->grade == "eleve")
+
+          @include('admin.includes.eleve_menu')
+          
+        @elseif(Auth::user()->grade == "parent")
+
+          @include('admin.includes.parent_menu')
+          
+        @elseif(Auth::user()->grade == "enseignant")
+
+          @include('admin.includes.enseignant_menu')
+          
         @endif
       </nav>
       <!-- /.sidebar-menu -->

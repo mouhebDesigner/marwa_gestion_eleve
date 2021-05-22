@@ -86,15 +86,7 @@
         </a>
     </li>
     
-    <li class="nav-item @if(Request::is('admin/abscence*')) active @endif">
-        <a href="{{ url('admin/abscence') }}" class="nav-link ">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-            Gérer les abscence
-            <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-    </li>
+   
     <li class="nav-item">
         <a href="{{ url('admin/cantines') }}" class="nav-link @if(Request::is('*cantine*')) active @endif">
             <i class="nav-icon fas fa-utensils"></i>
