@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Liste des élèves</h1>
+                            <h1 class="m-0">Les cantines</h1>
                         </div><!-- /.col -->
                        
                     </div>
@@ -48,7 +48,6 @@
                                                         aria-controls="example1">
                                                     </label>
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                     </div>
@@ -58,16 +57,16 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Nom d'élève
+                                                            Type 
                                                         </th>
                                                         <th>
-                                                            Nom de parent
+                                                            Jours 
                                                         </th>
                                                         <th>
-                                                            Email
+                                                            Temps 
                                                         </th>
                                                         <th>
-                                                            Classe
+                                                            Nombre de repas
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -79,73 +78,44 @@
                                                         <th>
                                                             Actions
                                                         </th>
-
                                                     </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($eleves as $eleve)
+                                                    @foreach($cantines as $cantine)
                                                         <tr>
-                                                            <td>{{ $eleve->user->nom }}</td>
-                                                            <td>{{ $eleve->relative->user->nom }}</td>
-                                                            <td>{{ $eleve->user->email }}</td>
-                                                            <td>{{ $eleve->niveau->titre }}</td>
-                                                            <td>{{ $eleve->created_at }}</td>
-                                                            <td>{{ $eleve->updated_at }}</td>
+                                                            <td>{{ $cantine->type }}</td>
+                                                            <td>{{ $cantine->jours }}</td>
+                                                            <td>{{ $cantine->temps }}</td>
+                                                            <td>{{ $cantine->repas()->count() }}</td>
+                                                            <td>{{ $cantine->created_at }}</td>
+                                                            <td>{{ $cantine->updated_at }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
-                                                                    @if(App\Models\Absence::where('eleve_id', $eleve->id)->where('seance_id', $seance_id)->count() > 0)
-                                                                        @if(App\Models\Absence::where('eleve_id', $eleve->id)->where('seance_id', $seance_id)->first()->absent == 'oui')
-                                                                        
-                                                                        <a class="btn btn-primary" href="#" onclick="return confirm('Cet éléve est mentionné comme absent')">
-                                                                            Absent <i class="fas fa-check"></i>
-                                                                        </a>
-                                                                        @else 
+                                                                  
+                                                                    
+                                                                    <a href="{{ url('eleve/cantine/'.$cantine->id.'/repas') }}" class="btn btn-primary">
+                                                                        Voir repas
+                                                                    </a>
 
-                                                                            <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/absent') }}" onclick="return confirm('Voules-vous mentioner cet élève comme absent')">
-                                                                                Absent
-                                                                            </a>
-                                                                        @endif
-                                                                    @else 
-                                                                        <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/absent') }}" onclick="return confirm('Voules-vous mentioner cet élève comme absent')">
-                                                                            Absent
-                                                                        </a>
-                                                                    @endif
-                                                                    @if(App\Models\Absence::where('eleve_id', $eleve->id)->where('seance_id', $seance_id)->count() > 0)
-                                                                        @if(App\Models\Absence::where('eleve_id', $eleve->id)->where('seance_id', $seance_id)->first()->absent == 'non')
-
-                                                                        <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/present') }}" onclick="return confirm('Voules-vous mentioner cet élève comme présent')">
-                                                                            Présent <i class="fas fa-check"></i>
-                                                                        </a>
-                                                                        @else 
-
-                                                                            <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/present') }}" onclick="return confirm('Voules-vous mentioner cet élève comme présent')">
-                                                                                Présent
-                                                                            </a>
-                                                                        @endif
-                                                                    @else 
-                                                                        <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/present') }}" onclick="return confirm('Voules-vous mentioner cet élève comme présent')">
-                                                                            Présent
-                                                                        </a>
-                                                                    @endif
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr>
+                                                     <tr>
                                                         <th>
-                                                            Nom d'élève
+                                                            Type 
                                                         </th>
                                                         <th>
-                                                            Nom de parent
+                                                            Jours 
                                                         </th>
                                                         <th>
-                                                            Email
+                                                            Temps 
                                                         </th>
                                                         <th>
-                                                            Classe
+                                                            Nombre de repas
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -157,11 +127,11 @@
                                                         <th>
                                                             Actions
                                                         </th>
-
                                                     </tr>
                                                 </tfoot>
                                             </table>
                                         </div>
+                                        {{ $cantines->links() }}
                                     </div>
                                 </div>
                             <!-- /.card-body -->

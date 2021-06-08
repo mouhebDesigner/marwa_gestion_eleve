@@ -11,7 +11,7 @@
         </a>
     </li>
   
-    <li class="nav-item @if(Request::is('parent/enseignants*')) active @endif">
+    <li class="nav-item @if(Request::is('parent/notes*')) active @endif">
         <a href="{{ url('parent/notes') }}" class="nav-link ">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>

@@ -51,4 +51,10 @@ class User extends Authenticatable
     public function eleve(){
         return $this->hasOne(Eleve::class);
     }
+
+    public function relative(){
+
+        return $this->hasOne(Relative::class);
+
+    }
 }

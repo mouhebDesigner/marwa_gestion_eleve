@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Liste des élèves</h1>
+                            <h1 class="m-0">Liste des matières</h1>
                         </div><!-- /.col -->
                        
                     </div>
@@ -48,7 +48,7 @@
                                                         aria-controls="example1">
                                                     </label>
                                                 </div>
-                                                
+                                             
                                             </div>
                                         </div>
                                     </div>
@@ -58,16 +58,13 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Nom d'élève
+                                                            Titre de matiére
                                                         </th>
                                                         <th>
-                                                            Nom de parent
+                                                            Nom d'enseignant
                                                         </th>
                                                         <th>
-                                                            Email
-                                                        </th>
-                                                        <th>
-                                                            Classe
+                                                            Nom de classe
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -76,76 +73,32 @@
                                                         <th>
                                                             date de modification
                                                         </th>
-                                                        <th>
-                                                            Actions
-                                                        </th>
-
+                                                       
                                                     </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($eleves as $eleve)
+                                                    @foreach($matieres as $matiere)
                                                         <tr>
-                                                            <td>{{ $eleve->user->nom }}</td>
-                                                            <td>{{ $eleve->relative->user->nom }}</td>
-                                                            <td>{{ $eleve->user->email }}</td>
-                                                            <td>{{ $eleve->niveau->titre }}</td>
-                                                            <td>{{ $eleve->created_at }}</td>
-                                                            <td>{{ $eleve->updated_at }}</td>
-                                                            <td>
-                                                                <div class="d-flex justify-content-around">
-                                                                    @if(App\Models\Absence::where('eleve_id', $eleve->id)->where('seance_id', $seance_id)->count() > 0)
-                                                                        @if(App\Models\Absence::where('eleve_id', $eleve->id)->where('seance_id', $seance_id)->first()->absent == 'oui')
-                                                                        
-                                                                        <a class="btn btn-primary" href="#" onclick="return confirm('Cet éléve est mentionné comme absent')">
-                                                                            Absent <i class="fas fa-check"></i>
-                                                                        </a>
-                                                                        @else 
-
-                                                                            <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/absent') }}" onclick="return confirm('Voules-vous mentioner cet élève comme absent')">
-                                                                                Absent
-                                                                            </a>
-                                                                        @endif
-                                                                    @else 
-                                                                        <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/absent') }}" onclick="return confirm('Voules-vous mentioner cet élève comme absent')">
-                                                                            Absent
-                                                                        </a>
-                                                                    @endif
-                                                                    @if(App\Models\Absence::where('eleve_id', $eleve->id)->where('seance_id', $seance_id)->count() > 0)
-                                                                        @if(App\Models\Absence::where('eleve_id', $eleve->id)->where('seance_id', $seance_id)->first()->absent == 'non')
-
-                                                                        <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/present') }}" onclick="return confirm('Voules-vous mentioner cet élève comme présent')">
-                                                                            Présent <i class="fas fa-check"></i>
-                                                                        </a>
-                                                                        @else 
-
-                                                                            <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/present') }}" onclick="return confirm('Voules-vous mentioner cet élève comme présent')">
-                                                                                Présent
-                                                                            </a>
-                                                                        @endif
-                                                                    @else 
-                                                                        <a class="btn btn-primary" href="{{ url('enseignant/seance/'.$seance_id.'/absences/'.$eleve->id.'/present') }}" onclick="return confirm('Voules-vous mentioner cet élève comme présent')">
-                                                                            Présent
-                                                                        </a>
-                                                                    @endif
-                                                                </div>
-                                                            </td>
+                                                            <td>{{ $matiere->titre }}</td>
+                                                            <td>{{ $matiere->enseignant->user->nom }}</td>
+                                                            <td>{{ $matiere->niveau->titre }}</td>
+                                                            <td>{{ $matiere->created_at }}</td>
+                                                            <td>{{ $matiere->updated_at }}</td>
+                                                           
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr>
+                                                     <tr>
                                                         <th>
-                                                            Nom d'élève
+                                                            Titre de matiére
                                                         </th>
                                                         <th>
-                                                            Nom de parent
+                                                            Nom d'enseignant
                                                         </th>
                                                         <th>
-                                                            Email
-                                                        </th>
-                                                        <th>
-                                                            Classe
+                                                            Nom de classe
                                                         </th>
                                                         <th>
                                                             date de creation
@@ -154,10 +107,7 @@
                                                         <th>
                                                             date de modification
                                                         </th>
-                                                        <th>
-                                                            Actions
-                                                        </th>
-
+                                                       
                                                     </tr>
                                                 </tfoot>
                                             </table>

@@ -29,16 +29,25 @@
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('eleve/eleves*')) active @endif">
-        <a href="{{ url('eleve/absences') }}" class="nav-link ">
-            <i class="nav-icon fas fa-user-graduate"></i>
+    <li class="nav-item @if(Request::is('eleve/notes*')) active @endif">
+        <a href="{{ url('eleve/notes') }}" class="nav-link ">
+            <i class="nav-icon fas fa-user-secret"></i>
             <p>
-            Consulter absences
+                Consulter notes
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('eleve/cantines*')) active @endif">
+    <li class="nav-item @if(Request::is('eleve/absences*')) active @endif">
+        <a href="{{ url('eleve/absences') }}" class="nav-link ">
+            <i class="nav-icon fas fa-user-graduate"></i>
+            <p>
+                Consulter absences
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+    </li>
+    <li class="nav-item @if(Request::is('eleve/cantine*')) active @endif">
         <a href="{{ url('eleve/cantines') }}" class="nav-link ">
             <i class="nav-icon fas fa-utensils"></i>
             <p>

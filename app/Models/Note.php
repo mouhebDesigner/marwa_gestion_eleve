@@ -12,4 +12,8 @@ class Note extends Model
     public function eleve(){
         return $this->belongsTo(Eleve::class);
     }
+
+    public function matiere(){
+        return $this->belongsTo(Matiere::class);
+    }
 }

@@ -18,4 +18,14 @@ class Matiere extends Model
 
     }
     
+    public function seances(){
+        return $this->hasMany(Seance::class);
+    }
+
+    public function notes(){
+        return $this->hasMany(Note::class);
+    }
+
+
+    
 }
