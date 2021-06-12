@@ -48,4 +48,13 @@
             </p>
         </a>
     </li>
+    <li class="nav-item @if(Request::is('parent/contacts*')) active @endif">
+        <a href="{{ url('parent/contacts') }}" class="nav-link ">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Gérer les contacts
+            <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+    </li>
 </ul>

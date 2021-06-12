@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ClasseController;
 use App\Http\Controllers\Admin\NiveauController;
 use App\Http\Controllers\Admin\ParentController;
 use App\Http\Controllers\Admin\CantineController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MatiereController;
 use App\Http\Controllers\Enseignant\NoteController;
 use App\Http\Controllers\Admin\EnseignantController;
@@ -14,21 +15,21 @@ use App\Http\Controllers\Admin\SecretaireController;
 use App\Http\Controllers\Admin\InscriptionController;
 use App\Http\Controllers\Enseignant\EmploiController;
 use App\Http\Controllers\Enseignant\AbsenceController;
+use App\Http\Controllers\Eleve\NoteController as NoteController_eleve;
+use App\Http\Controllers\Eleve\RepaController as RepaController_eleve;
+use App\Http\Controllers\Parent\NoteController as NoteController_parent;
+use App\Http\Controllers\Parent\RepaController as RepaController_parent;
 use App\Http\Controllers\Admin\SeanceController as SeanceController_admin;
+use App\Http\Controllers\Eleve\EmploiController as EmploiController_eleve;
+use App\Http\Controllers\Eleve\AbsenceController as AbsenceController_eleve;
+use App\Http\Controllers\Eleve\CantineController as CantineController_eleve;
+use App\Http\Controllers\Eleve\MatiereController as MatiereController_eleve;
+use App\Http\Controllers\Parent\EmploiController as EmploiController_parent;
+use App\Http\Controllers\Parent\AbsenceController as AbsenceController_parent;
+use App\Http\Controllers\Parent\CantineController as CantineController_parent;
+use App\Http\Controllers\Parent\MatiereController as MatiereController_parent;
 use App\Http\Controllers\Enseignant\EleveController as EleveController_enseignant;
 use App\Http\Controllers\Enseignant\MatiereController as MatiereController_enseignant;
-use App\Http\Controllers\Eleve\MatiereController as MatiereController_eleve;
-use App\Http\Controllers\Eleve\NoteController as NoteController_eleve;
-use App\Http\Controllers\Eleve\EmploiController as EmploiController_eleve;
-use App\Http\Controllers\Eleve\RepaController as RepaController_eleve;
-use App\Http\Controllers\Eleve\CantineController as CantineController_eleve;
-use App\Http\Controllers\Eleve\AbsenceController as AbsenceController_eleve;
-use App\Http\Controllers\Parent\MatiereController as MatiereController_parent;
-use App\Http\Controllers\Parent\NoteController as NoteController_parent;
-use App\Http\Controllers\Parent\EmploiController as EmploiController_parent;
-use App\Http\Controllers\Parent\RepaController as RepaController_parent;
-use App\Http\Controllers\Parent\CantineController as CantineController_parent;
-use App\Http\Controllers\Parent\AbsenceController as AbsenceController_parent;
 
 
 /*
@@ -53,7 +54,9 @@ Auth::routes(['register' => 'false']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::resource('contacts', ContactController::class);
 Route::prefix('admin')->group(function () {
+    Route::resource('contacts', ContactController::class);
     Route::resource('enseignants', EnseignantController::class)->middleware('auth');
     Route::resource('secretaires', SecretaireController::class)->middleware('auth');
     Route::resource('eleves', EleveController::class)->middleware('auth');
@@ -71,6 +74,7 @@ Route::prefix('admin')->group(function () {
 
 });
 Route::prefix('secretaire')->group(function () {
+    Route::resource('contacts', ContactController::class);
     Route::resource('enseignants', EnseignantController::class)->middleware('auth');
     Route::resource('eleves', EleveController::class)->middleware('auth');
     Route::resource('parents', ParentController::class)->middleware('auth');
@@ -86,6 +90,7 @@ Route::prefix('secretaire')->group(function () {
 
 });
 Route::prefix('enseignant')->group(function () {
+    Route::resource('contacts', ContactController::class);
     Route::get('matieres', [MatiereController_enseignant::class, 'index'])->middleware('auth');
     Route::prefix('matiere/{matiere_id}')->group(function(){
         Route::resource('notes', NoteController::class)->only('index', 'store', 'create', 'edit')->middleware('auth');

@@ -98,7 +98,7 @@
     </li>
     
     <li class="nav-item">
-        <a href="{{ url('admin/contacts') }}" class="nav-link @if(Request::is('contacts*')) active @endif">
+        <a href="{{ url('admin/contacts') }}" class="nav-link @if(Request::is('admin/contacts*')) active @endif">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
             Gérer les contacts

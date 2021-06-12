@@ -75,4 +75,13 @@
             </p>
         </a>
     </li>
+    <li class="nav-item @if(Request::is('secretaire/contacts*')) active @endif">
+        <a href="{{ url('secretaire/contacts') }}" class="nav-link ">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Gérer les contacts
+            <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+    </li>
 </ul>
